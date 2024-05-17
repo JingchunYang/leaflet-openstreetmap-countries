@@ -15,7 +15,7 @@ function setup() {
     console.log(countriesgeojson.features[99].properties.ADMIN);
 
     //Use JavaScript and draw the map with Leaflet.js once
-    var map = L.map('mapid').setView([51.505, -0.09], 2);
+    var map = L.map('mapid').setView([51.505, -0.09], 4);
 
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         noWrap: true,
