@@ -60,7 +60,7 @@ function setup() {
                 // layer.bindPopup(country);
             }
         }
-    }).addTo(map).on('mouseover', handleClick);
+    }).addTo(map).on('click', handleClick);
     document.getElementById("defaultCanvas0").style.zIndex = 1000;
     document.getElementById("defaultCanvas0").style.top = "50px";
     document.getElementById("defaultCanvas0").style.position = "absolute";
@@ -83,4 +83,11 @@ function draw() {
     clear()
     ellipse(radius / 2, radius / 2, radius, radius);
     text(country, 20, 20);
+}
+
+function mousePressed(){
+    radius= 0
+}
+function mouseReleased(){
+    radius= 80
 }
