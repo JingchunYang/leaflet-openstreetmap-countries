@@ -1,6 +1,7 @@
 let countriesgeojson;
 let xx = 0, yy = 0;
 let radius = 80;
+let country = "";
 function preload() {
     //create a div using p5.js
     mapDiv = createElement('div');
@@ -59,7 +60,7 @@ function setup() {
                 // layer.bindPopup(country);
             }
         }
-    }).addTo(map).on('click', handleClick);
+    }).addTo(map).on('mouseover', handleClick);
     document.getElementById("defaultCanvas0").style.zIndex = 1000;
     document.getElementById("defaultCanvas0").style.top = "50px";
     document.getElementById("defaultCanvas0").style.position = "absolute";
@@ -67,15 +68,19 @@ function setup() {
 }
 function handleClick(e) {
     //some stuff then:
-    console.log(e.containerPoint)
+    // console.log(e)
+    let properties = e.sourceTarget.feature.properties;
+    // console.log(properties)
+    properties = JSON.stringify(properties)
+    // console.log(JSON.parse(properties).ADMIN)
     xx = parseInt(e.containerPoint.x);
     yy = parseInt(e.containerPoint.y);
     document.getElementById("defaultCanvas0").style.top = `${yy - radius / 2}px`;
     document.getElementById("defaultCanvas0").style.left = `${xx - radius / 2}px`;
+    country = JSON.parse(properties).ADMIN;
 }
 function draw() {
     clear()
     ellipse(radius / 2, radius / 2, radius, radius);
-
-
+    text(country, 20, 20);
 }
